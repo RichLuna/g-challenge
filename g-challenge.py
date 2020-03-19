@@ -3,9 +3,6 @@ def open_e():
 	e_file = open("euler.txt")
 	e = e_file.read()
 	return e
-	
-
-
 
 #########################################################################
 #Start challenge here
@@ -48,4 +45,34 @@ PRO TIPS
 #Obtenemos el número e
 e = open_e()
 
+def isPrime(number):
+    for i in range(2, number):
+        if (number % i) == 0:
+            return False
+    return True
+
+def findPrimeNumber (eulerNumberList):
+    indexStart = 2
+    indexFinal = 12    
+    
+    for element in eulerNumberList[2:]:
+        list = eulerNumberList[indexStart:indexFinal]
+        sum = 0
+        for x in list:
+            sum += int(x)
+    
+        checkPrime = isPrime(sum)
+                
+        if(checkPrime):
+            return list
+        
+        indexStart+=1
+        indexFinal+=1
+    
+    return "Not Found"
+    
+
+
+output = findPrimeNumber(e)
+print(output)
 
