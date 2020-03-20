@@ -45,34 +45,41 @@ PRO TIPS
 #Obtenemos el número e
 e = open_e()
 
-def isPrime(number):
-    for i in range(2, number):
-        if (number % i) == 0:
+def removeWhiteSpaces(eulerString):
+    return "".join(eulerString.split());
+
+def isPrime(n):    
+    for i in range(2,n):             
+        if n % i == 0: 
             return False
     return True
 
-def findPrimeNumber (eulerNumberList):
+def findPrimeNumber (eulerNumberListWithSpace):
     indexStart = 2
-    indexFinal = 12    
+    indexFinal = 12
+    
+    eulerNumberList = removeWhiteSpaces(eulerNumberListWithSpace)
     
     for element in eulerNumberList[2:]:
         list = eulerNumberList[indexStart:indexFinal]
-        sum = 0
+        sum = ""
+        
         for x in list:
-            sum += int(x)
+            sum += x
+         
+        testnumber = int(sum)
     
-        checkPrime = isPrime(sum)
+        checkPrime = isPrime(testnumber)
                 
         if(checkPrime):
             return list
         
         indexStart+=1
         indexFinal+=1
+        
     
     return "Not Found"
-    
-
 
 output = findPrimeNumber(e)
-print(output)
+print("Result: " + str(output))
 
