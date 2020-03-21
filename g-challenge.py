@@ -3,9 +3,6 @@ def open_e():
 	e_file = open("euler.txt")
 	e = e_file.read()
 	return e
-	
-
-
 
 #########################################################################
 #Start challenge here
@@ -48,4 +45,31 @@ PRO TIPS
 #Obtenemos el número e
 e = open_e()
 
+def removeWhiteSpaces(eulerString):
+    return "".join(eulerString.split())
+
+def isPrime(n):        
+    for i in range(2,n):             
+        if n % i == 0: 
+            return False
+    return True
+
+def findPrimeNumber (eulerNumberListWithSpace):
+    eulerNumberList = removeWhiteSpaces(eulerNumberListWithSpace)
+    
+    indexStart = 2
+    indexFinal = 12    
+    indexEuler = len(eulerNumberList)   
+    
+    while(indexFinal <= indexEuler):
+        listEuler = eulerNumberList[indexStart:indexFinal]        
+        checkPrime = isPrime(int(listEuler))
+        if(checkPrime):
+            return listEuler        
+        indexStart+=1
+        indexFinal+=1
+    return "Not Found"
+
+output = findPrimeNumber(e)
+print("Result: " + str(output))
 
