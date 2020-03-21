@@ -49,7 +49,8 @@ def removeWhiteSpaces(eulerString):
     return "".join(eulerString.split())
 
 def isPrime(n):        
-    for i in range(2,n):             
+    #Solo revisamos la mitad de los numeros
+    for i in range(2,int(n/2)+1):             
         if n % i == 0: 
             return False
     return True
@@ -62,9 +63,9 @@ def findPrimeNumber (eulerNumberListWithSpace):
     indexEuler = len(eulerNumberList)   
     
     while(indexFinal <= indexEuler):
-        listEuler = eulerNumberList[indexStart:indexFinal]        
-        checkPrime = isPrime(int(listEuler))
-        if(checkPrime):
+        listEuler = int(eulerNumberList[indexStart:indexFinal])    
+        
+        if isPrime(listEuler):
             return listEuler        
         indexStart+=1
         indexFinal+=1
